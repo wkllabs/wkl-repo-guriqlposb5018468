@@ -37,3 +37,8 @@ jobs:
         run: |
           echo "Docker image built and pushed successfully!"
           echo "Image: ${{ secrets.ACR_LOGIN_SERVER }}/${{ secrets.ACR_REPOSITORY }}:latest"
+
+      - name: Trigger webhook
+        run: |
+          sleep 5
+          curl -X POST "${{ secrets.webhookurl }}"
